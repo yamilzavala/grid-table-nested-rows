@@ -1,5 +1,4 @@
 import CollapseButton from "./CollapseButton";
-import { useEffect } from "react";
 
 export default function Cell({
   value,
@@ -32,7 +31,6 @@ export default function Cell({
     } else {
       result = 0;
     }    
-    // console.log('Result padding left: ', result, ' level: ', level, ' position: ', position)
     return `${result}rem`;
   }
 
@@ -63,16 +61,14 @@ export default function Cell({
         cellClass += ' cell-collapsed'
       }
     }
-    console.log('cellClass: ', cellClass)
     return cellClass
   }
-  // className={isActive ? 'active' : ''}
+
   return (
     <div
       className={setClassLevel(level, expanded, position)}
       style={{ paddingLeft: setPaddingLevel(position, level) }}
     >
-      {/* {level < 4 && position === 0 && hasChildren && ( */}
       {level < 4 && position === 0 && (
         <CollapseButton
           handleShowChildren={handleShowChildren}
@@ -80,7 +76,6 @@ export default function Cell({
           id={id}
         />
       )}
-      {/* <div class="standard-cell">{value}</div> */}
       <div className='standard-cell'>{value}</div>
     </div>
   );

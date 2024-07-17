@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Header from "./Header";
-import Row from "./Row";
 import GoToTopButton from "./GoTopButton";
 import CollapseAllButton from "./CollapseAllButton";
 import RowList from "./RowList";

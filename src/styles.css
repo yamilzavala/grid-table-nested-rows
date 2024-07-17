@@ -176,8 +176,8 @@ main {
   border-top-left-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
   border-right: solid 1px #fff;
-  font-weight: 500;
-  color: #0c0c0c;
+  font-weight: 700;
+  color: #000;
 }
 .cell-b {
   grid-area: b;

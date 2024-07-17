@@ -8,13 +8,18 @@ export default function Row({
   legalDescription,
   children,
   collapse,
-  id
+  id,
+  rowPosition
 }) {
   const [expanded, setExpanded] = useState(false);
   const rendrerChildren = children?.map((child, idx) => {
     const idIncreased = idx+1;
+    const childProps = {
+      ...child,
+      id: idIncreased
+    }
     return (<div id={idIncreased} className={expanded ? "expanded" : "collapsed"}>
-      <Row key={idx} {...child } />
+      <Row key={idx} {...childProps } />
     </div>)
   });
 
@@ -22,24 +27,30 @@ export default function Row({
     setExpanded(!expanded);
   };
 
-  useEffect(() => {   
-      if (collapse) {
-        setExpanded(false);
-      } else {
-        setExpanded(true);
-      }
+  const handleCollapse = () => {
     //REFACTOR
-    // if (id === 0) {
-    //   console.log('ID first: ', id)
-    //   setExpanded(true);
-    // } else if(id > 0) {
-    //   console.log('ID: ', id)
-    //   if (collapse) {
-    //     setExpanded(false);
-    //   } else {
-    //     setExpanded(true);
-    //   }
-    // }
+    if(id === 0) {
+      setExpanded(true);
+    } else {
+      children?.forEach(child => {
+        if (collapse) {
+          setExpanded(false);
+        } else {
+          setExpanded(true);
+        }
+        // child.setExpanded(true);
+        // console.log(child)
+      });
+      // if (collapse) {
+      //   setExpanded(false);
+      // } else {
+      //   setExpanded(true);
+      // }
+    }
+  }
+
+  useEffect(() => {   
+    handleCollapse();
   }, [collapse]);
 
   return (
