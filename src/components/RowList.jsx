@@ -8,9 +8,9 @@ const RowList = ({rows, goToTop, allCollapse, columns}) => {
     ));
 
     const handleTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
+        const top_elment = document.getElementById('topel');
+        top_elment?.scrollIntoView({
+            behavior: "smooth"
         });
     };
 
@@ -20,7 +20,8 @@ const RowList = ({rows, goToTop, allCollapse, columns}) => {
 
     return (
         <div className="rows-container scroll-container">
-            <Header columns={columns} />
+            <div id='topel'></div>
+            <Header columns={columns}/>
             {renderedRows}
         </div>
     );
