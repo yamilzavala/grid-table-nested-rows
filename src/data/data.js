@@ -1,0 +1,203 @@
+export const dataLevels = [
+  {
+    wbsElement: "ESI001093",
+    level: 1,
+    levelDescription: "L1 - Contract level",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+    children: [
+      {
+        wbsElement: "ESI001093-child",
+        level: 2,
+        levelDescription: "L2 - Pricing",
+        description: "SAP Implementation FY24",
+        legalDescription: "SAP Implementation FY24",
+        children: [
+          {
+            wbsElement: "ESI001093-child-3",
+            level: 3,
+            levelDescription: "L3 - Service Allocation",
+            description: "SAP Implementation FY24",
+            legalDescription: "SAP Implementation FY24",
+          },
+          {
+            wbsElement: "ESI001093-child-3",
+            level: 4,
+            levelDescription: "L4 - Service Allocation",
+            description: "SAP Implementation FY24",
+            legalDescription: "SAP Implementation FY24",
+          },
+          {
+            wbsElement: "ESI001093-child-3",
+            level: 4,
+            levelDescription: "L4 - Service Allocation",
+            description: "SAP Implementation FY24",
+            legalDescription: "SAP Implementation FY24",
+          },
+        ],
+      },
+      {
+        wbsElement: "ESI001093-child",
+        level: 3,
+        levelDescription: "L3 - Service Allocation",
+        description: "SAP Implementation FY24",
+        legalDescription: "SAP Implementation FY24",
+      },
+      {
+        wbsElement: "ESI001093-child",
+        level: 4,
+        levelDescription: "L4 - Service Allocation",
+        description: "SAP Implementation FY24",
+        legalDescription: "SAP Implementation FY24",
+      },
+    ],
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+    children: [
+      {
+        wbsElement: "ESI001093-child-2",
+        level: 3,
+        levelDescription: "L3 - Service Allocation",
+        description: "SAP Implementation FY24",
+        legalDescription: "SAP Implementation FY24",
+      },
+      {
+        wbsElement: "ESI001093-child-2",
+        level: 4,
+        levelDescription: "L4 - Service Allocation",
+        description: "SAP Implementation FY24",
+        legalDescription: "SAP Implementation FY24",
+      },
+    ],
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 3,
+    levelDescription: "L3 - Service Allocation",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 2,
+    levelDescription: "L2 - Pricing",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 3,
+    levelDescription: "L3 - Service Allocation",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+  {
+    wbsElement: "ESI001093",
+    level: 4,
+    levelDescription: "L4 - Service Allocation",
+    description: "SAP Implementation FY24",
+    legalDescription: "SAP Implementation FY24",
+  },
+];
+
+export const columns = [
+  "WBS Element",
+  "level",
+  "description",
+  "legal description",
+];
+
+const data = [
+  {
+    id: 1,
+    title: "Some title",
+    info: "Some .... Coloring book forage photo booth gentrify lumbersexual. Migas chillwave poutine synth shoreditch, enamel pin thundercats fashion axe roof party polaroid chartreuse.",
+    expanded: false,
+  },
+  {
+    id: 2,
+    title: "How do I change my My Page password?",
+    info: "Coloring book forage photo booth gentrify lumbersexual. Migas chillwave poutine synth shoreditch, enamel pin thundercats fashion axe roof party polaroid chartreuse.",
+    expanded: false,
+  },
+  {
+    id: 3,
+    title: "What is BankID?",
+    info: "Enamel pin fam sustainable woke whatever venmo. Authentic asymmetrical put a bird on it, lumbersexual activated charcoal kinfolk banjo cred pickled sartorial.",
+    expanded: false,
+  },
+  {
+    id: 4,
+    title: "Whose birth number can I use?",
+    info: "Edison bulb direct trade gentrify beard lo-fi seitan sustainable roof party franzen occupy squid. Knausgaard cronut succulents, scenester readymade shabby chic lyft. Copper mug meh vegan gentrify.",
+    expanded: false,
+  },
+  {
+    id: 5,
+    title: "When do I recieve a password ordered by letter?",
+    info: "Locavore franzen fashion axe live-edge neutra irony synth af tilde shabby chic man braid chillwave waistcoat copper mug messenger bag. Banjo snackwave blog, microdosing thundercats migas vaporware viral lo-fi seitan ",
+    expanded: false,
+  },
+];
+export default data;
