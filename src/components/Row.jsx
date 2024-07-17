@@ -12,19 +12,34 @@ export default function Row({
 }) {
   const [expanded, setExpanded] = useState(false);
   const rendrerChildren = children?.map((child, idx) => {
-    return <Row key={idx} {...child} />;
+    const idIncreased = idx+1;
+    return (<div id={idIncreased} className={expanded ? "expanded" : "collapsed"}>
+      <Row key={idx} {...child } />
+    </div>)
   });
 
   const handleShowChildren = () => {
     setExpanded(!expanded);
   };
 
-  useEffect(() => {
-    if (collapse) {
-      setExpanded(false);
-    } else {
-      setExpanded(true);
-    }
+  useEffect(() => {   
+      if (collapse) {
+        setExpanded(false);
+      } else {
+        setExpanded(true);
+      }
+    //REFACTOR
+    // if (id === 0) {
+    //   console.log('ID first: ', id)
+    //   setExpanded(true);
+    // } else if(id > 0) {
+    //   console.log('ID: ', id)
+    //   if (collapse) {
+    //     setExpanded(false);
+    //   } else {
+    //     setExpanded(true);
+    //   }
+    // }
   }, [collapse]);
 
   return (
@@ -40,21 +55,20 @@ export default function Row({
           handleShowChildren={handleShowChildren}
           expanded={expanded}
           hasChildren={children?.length > 0}
+          id={id}
         />
 
         {/* cell 2 */}
-        <Cell value={levelDescription} position={1} expanded={expanded} />
+        <Cell value={levelDescription} position={1} expanded={expanded} id={id} level={level}/>
 
         {/* cell 3 */}
-        <Cell value={description} position={2} expanded={expanded} />
+        <Cell value={description} position={2} expanded={expanded} id={id} level={level}/>
 
         {/* cell 4 */}
-        <Cell value={legalDescription} position={3} expanded={expanded} />
+        <Cell value={legalDescription} position={3} expanded={expanded} id={id} level={level}/>
       </div>
-      {/* children */}
-      <div className={expanded ? "expanded" : "collapsed"}>
+      {/* children */}      
         {rendrerChildren}
-      </div>
     </>
   );
 }

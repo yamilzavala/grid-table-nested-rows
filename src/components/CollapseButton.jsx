@@ -3,9 +3,9 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 
-export default function CollapseButton({ handleShowChildren, expanded }) {
+export default function CollapseButton({ handleShowChildren, expanded, id }) {
   return (
-    <button onClick={handleShowChildren} className="btn-arrow">
+    <button disabled={id === 0} onClick={handleShowChildren} className="btn-arrow">
       {expanded ? <MdOutlineKeyboardArrowUp /> : <MdOutlineKeyboardArrowDown />}
     </button>
   );
