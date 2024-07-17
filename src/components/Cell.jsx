@@ -10,25 +10,6 @@ export default function Cell({
   hasChildren,
   id
 }) {
-  // let cellClass = "scroll-container row-cell cell-";
-
-  // switch (position) {
-  //   case 0:
-  //     cellClass += "a";
-  //     break;
-  //   case 1:
-  //     cellClass += "b";
-  //     break;
-  //   case 2:
-  //     cellClass += "c";
-  //     break;
-  //   case 3:
-  //     cellClass += "d";
-  //     break;
-  // }
-
-  // useEffect(() => {
-  // }, [])
 
   function setPaddingLevel(position, level) {
     let result = 0;
@@ -48,13 +29,12 @@ export default function Cell({
           result = 10;
           break;
       }
-    } else if (position > 0) {
+    } else {
       result = 0;
     }    
+    // console.log('Result padding left: ', result, ' level: ', level, ' position: ', position)
     return `${result}rem`;
   }
-
-
 
   function setClassLevel(level, expanded, position) {
     let cellClass = "scroll-container row-cell cell-";
@@ -90,7 +70,7 @@ export default function Cell({
   return (
     <div
       className={setClassLevel(level, expanded, position)}
-      style={{ paddingLeft: setPaddingLevel(level) }}
+      style={{ paddingLeft: setPaddingLevel(position, level) }}
     >
       {/* {level < 4 && position === 0 && hasChildren && ( */}
       {level < 4 && position === 0 && (

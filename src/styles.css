@@ -160,10 +160,11 @@ main {
   display: flex;
   align-items: center;  
   border: solid 1px #e0e0e0;
-  padding: 1rem;
+  padding: 0.2rem;
   overflow-x: auto;
   color: #53565a;
   text-transform: capitalize;
+  min-height: 3rem;
 }
 
 .cell-a {
@@ -193,6 +194,8 @@ main {
 
 .standard-cell {
   padding: 0 0 0 1rem;
+  font-size: 0.75rem;
+  Color: #63666A;
 }
 
 /* === LEVELS === */
