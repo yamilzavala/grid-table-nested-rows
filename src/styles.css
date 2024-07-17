@@ -130,7 +130,7 @@ main {
 .cell-ha {
   grid-area: ha;
   background: #e0eff6;
-  border-top-left-radius: 0.5rem;
+  border-top-left-radius: 0.3rem;
 }
 .cell-hb {
   grid-area: hb;
@@ -143,7 +143,7 @@ main {
 .cell-hd {
   grid-area: hd;
   background: #e0eff6;
-  border-top-right-radius: 0.5rem;
+  border-top-right-radius: 0.3rem;
 }
 
 /* === ROW AND CELL ROWS === */
@@ -164,13 +164,13 @@ main {
   overflow-x: auto;
   color: #53565a;
   text-transform: capitalize;
-  min-height: 3rem;
+  min-height: 2.5rem;
 }
 
 .cell-a {
   grid-area: a;
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
   border-right: solid 1px #fff;
   font-weight: 500;
   color: #0c0c0c;
@@ -187,8 +187,8 @@ main {
 }
 .cell-d {
   grid-area: d;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
   border-left: solid 1px #fff;
 }
 
@@ -250,14 +250,14 @@ main {
 .btn-arrow {
   background: transparent;
   border-color: transparent;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #027db0;
   cursor: pointer;
-  font-size: 1.5rem;  
+  font-size: 1rem;  
 }
 
 .container-btn {
