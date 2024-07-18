@@ -11,6 +11,7 @@ export default function Row({
   id,
 }) {
   const [expanded, setExpanded] = useState(false);
+  const [currentContainerChildrenId, setCurrentContainerChildrenId] = useState(null);
 
   const renderedChildren = children?.map((child, idx) => {    
     const childProps = {
@@ -22,16 +23,14 @@ export default function Row({
     )
   });
 
-  const handleShowChildren = () => {
+  const handleShowChildren = (id) => {
     setExpanded(!expanded);
+    setCurrentContainerChildrenId(id)
   };
 
-
-  //effect to collapse or expand children cotainer
-  useEffect(() => {   
-    setExpanded(!expanded);
+  //toggle all containers
+  function toggleAllContainersChildren() {
     const childrenList = document.querySelectorAll('.expanded, .collapsed');
-
     childrenList.forEach(item => {
       if(Number(item.id) === 0) {
          item.classList.remove('collapsed')
@@ -46,7 +45,40 @@ export default function Row({
         }
       }
     })
+  }
+
+  //effect to collapse or expand children container from "Expand all" / "Collapse all"
+  useEffect(() => {   
+    setExpanded(!expanded);
+    toggleAllContainersChildren()
   }, [collapse]);
+
+  //toggle single container
+  function toggleSingleContainerChildren(id) {
+    const childrenList = document.querySelectorAll('.expanded, .collapsed');
+
+    childrenList.forEach(item => {
+      if(Number(item.id) === Number(id)) {
+        if(expanded) {
+          item.classList.remove('collapsed')
+          item.classList.add('expanded')
+        } else {
+          item.classList.remove('expanded')
+          item.classList.add('collapsed')
+        }
+      }
+
+      if(Number(item.id) === 0) {
+        item.classList.remove('collapsed')
+        item.classList.add('expanded')
+      }
+    })
+  }
+
+  //effect to collapse or expand children container from table
+  useEffect(() => {   
+    toggleSingleContainerChildren(currentContainerChildrenId)
+  }, [expanded]);
 
   return (
     <>
