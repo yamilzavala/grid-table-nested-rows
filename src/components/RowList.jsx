@@ -4,7 +4,7 @@ import Header from './Header';
 
 const RowList = ({rows, goToTop, allCollapse, columns}) => {
     const renderedRows = rows.map((row,idx) => (
-        <Row id={idx} key={row.id} {...row} collapse={allCollapse} rowPosition={idx} />
+        <Row id={row.id} key={idx} {...row} collapse={allCollapse} rowPosition={idx} />
     ));
 
     const handleTop = () => {

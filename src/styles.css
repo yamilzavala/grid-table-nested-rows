@@ -222,9 +222,23 @@ main {
 
 /* === COLLAPSED AND EXPANDED === */
 .expanded {
-  display: block;
+  transition: all 1s;
+  visibility: block;
+  /* display: block; */
+  opacity: 1;
+  transform: translateY(0);
 }
 .collapsed {
+  transition: all 1s;
+  visibility: hidden;
+  /* display: none; */
+  opacity: 0;
+  transform: translateY(-1.5rem);
+}
+.expanded-display {
+  display: block;
+}
+.collapsed-display {
   display: none;
 }
 .cell-expanded {
@@ -262,6 +276,11 @@ main {
   color: #027db0;
   cursor: pointer;
   font-size: 1rem;  
+  transition: all 1s;
+}
+
+.btn-arrow-rotated {
+  transform: rotate(180deg);
 }
 
 .container-btn {

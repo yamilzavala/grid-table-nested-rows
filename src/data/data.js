@@ -257,7 +257,7 @@ export const dataLevelsNested = [
     description: "SAP Implementation FY24",
     legalDescription: "SAP Implementation FY24",
     collapse: false,
-    id: 0,
+    id: '0',
     children: [
       {
       wbsElement: "ESI001093",
@@ -274,7 +274,7 @@ export const dataLevelsNested = [
           legalDescription: "SAP Implementation FY24",
           children: [],
           collapse: false,
-          id: 2,
+          id: '2a',
         },
         {
           wbsElement: "ESI001093-child-2",
@@ -284,11 +284,11 @@ export const dataLevelsNested = [
           legalDescription: "SAP Implementation FY24",
           children: [],
           collapse: false,
-          id: 2,
+          id: '2b',
         },
       ],
         collapse: false,
-        id: 1,
+        id: '2',
     },
     {
       wbsElement: "ESI001093",
@@ -298,7 +298,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 2,
+      id: '3',
     },
     {
       wbsElement: "ESI001093",
@@ -308,7 +308,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 3,
+      id: '4',
     },
     {
       wbsElement: "ESI001093",
@@ -318,7 +318,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 4,
+      id: '5',
     },
     {
       wbsElement: "ESI001093",
@@ -328,7 +328,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 5,
+      id: '6',
     },
     {
       wbsElement: "ESI001093",
@@ -338,7 +338,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 6,
+      id: '7',
     },
     {
       wbsElement: "ESI001093",
@@ -348,7 +348,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 7,
+      id: '8',
     },
     {
       wbsElement: "ESI001093",
@@ -358,7 +358,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 8,
+      id: '9',
     },
     {
       wbsElement: "ESI001093",
@@ -368,7 +368,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 9,
+      id: '10',
     },
     {
       wbsElement: "ESI001093",
@@ -378,7 +378,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 10,
+      id: '11',
     },
     {
       wbsElement: "ESI001093",
@@ -388,7 +388,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 11,
+      id: '12',
     },
     {
       wbsElement: "ESI001093",
@@ -398,7 +398,7 @@ export const dataLevelsNested = [
       legalDescription: "SAP Implementation FY24",
       children: [],
       collapse: false,
-      id: 12,
+      id: '13',
     },
     {
       wbsElement: "ESI001019",
@@ -415,7 +415,7 @@ export const dataLevelsNested = [
           legalDescription: "SAP Implementation FY24",
           children: [],
           collapse: false,
-          id: 1,
+          id: '14a',
         },
         {
           wbsElement: "ESI001093-child-3",
@@ -425,7 +425,7 @@ export const dataLevelsNested = [
           legalDescription: "SAP Implementation FY24",
           children: [],
           collapse: false,
-          id: 2,
+          id: '14b',
         },
         {
           wbsElement: "ESI001093-child-3",
@@ -435,11 +435,11 @@ export const dataLevelsNested = [
           legalDescription: "SAP Implementation FY24",
           children: [],
           collapse: false,
-          id: 3,
+          id: '14c',
         },
       ],
       collapse: false,
-      id: 13,
+      id: '14',
     },
     ],
   }

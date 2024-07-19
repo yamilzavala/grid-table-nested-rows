@@ -3,11 +3,11 @@ import CollapseButton from "./CollapseButton";
 export default function Cell({
   value,
   position,
-  level = 0,
-  handleShowChildren = () => {},
-  expanded = false,
-  hasChildren,
-  id
+  level,
+  handleShowChildren,
+  expanded,
+  id,
+  idContainer
 }) {
 
   function setPaddingLevel(position, level) {
@@ -34,7 +34,9 @@ export default function Cell({
     return `${result}rem`;
   }
 
-  function setClassLevel(level, expanded, position) {
+  function setClassLevel(level, expanded, position,id) {
+   // console.log('LEVEL: ', level, 'EXPANDED: ', expanded, 'POSITION: ', position, 'ID: ', id);
+    // console.log('expanded comming from ALL: ', expanded)
     let cellClass = "scroll-container row-cell cell-";
     // set grid template area
     switch (position) {
@@ -55,18 +57,25 @@ export default function Cell({
     if(level === 4) {
       cellClass += ' cell-collapsed'
     } else if (level < 4){
-      if(expanded) {
+      //debugger
+      if(id === '0') {
         cellClass += ' cell-expanded'
       } else {
-        cellClass += ' cell-collapsed'
+          if(expanded) {
+            cellClass += ' cell-expanded'
+          } else {
+            cellClass += ' cell-collapsed'
+          }
       }
     }
     return cellClass
   }
 
+  // console.log('RENDERED....', expanded)
+
   return (
     <div
-      className={setClassLevel(level, expanded, position)}
+      className={setClassLevel(level, expanded, position, id)}
       style={{ paddingLeft: setPaddingLevel(position, level) }}
     >
       {level < 4 && position === 0 && (
@@ -74,6 +83,7 @@ export default function Cell({
           handleShowChildren={handleShowChildren}
           expanded={expanded}
           id={id}
+          idContainer={idContainer}
         />
       )}
       <div className='standard-cell'>{value}</div>
