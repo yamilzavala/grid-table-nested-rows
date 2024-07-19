@@ -55,7 +55,7 @@ export default function Cell({
     }
     // set background cell 
     if(level === 4) {
-      cellClass += ' cell-collapsed'
+      cellClass += ' cell-collapsed level-4'
     } else if (level < 4){
       if(id === '0') {
         cellClass += ' cell-expanded'

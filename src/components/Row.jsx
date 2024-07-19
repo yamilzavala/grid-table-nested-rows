@@ -10,7 +10,7 @@ export default function Row({
   collapse,
   id,
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   const [currentContainerChildrenId, setCurrentContainerChildrenId] = useState(null);
 
   const renderedChildren = children?.map((child, idx) => {    
@@ -23,73 +23,6 @@ export default function Row({
     setCurrentContainerChildrenId(idContainer)
     setExpanded(!expanded);
   };
-
-  //toggle all containers
-  function toggleAllContainersChildren() {
-    const childrenList = document.querySelectorAll('.expanded, .collapsed');
-    childrenList.forEach(item => {    
-          if(expanded) {     
-            if(item.id !== 'children-container-0') {
-              item.classList.remove('collapsed-display')
-              item.classList.add('expanded-display')
-              setTimeout(() => {
-                item.classList.remove('collapsed')
-                item.classList.add('expanded')
-              }, 50)
-            }      
-          } else {
-            if(item.id !== 'children-container-0') {
-              item.classList.remove('expanded')
-              item.classList.add('collapsed')
-              setTimeout(() => {
-                item.classList.remove('expanded-display')
-                item.classList.add('collapsed-display')            
-              }, 500)
-             }
-          }
-    })
-    //validation to first row
-    if(childrenList[0].id === 'children-container-0') {
-      childrenList[0].classList.remove('collapsed')
-      childrenList[0].classList.remove('collapsed-display')
-      childrenList[0].classList.add('expanded')
-    }
-  }
-
-  function updateCellsRootRows() {
-    //get rootRows
-    const rowList = document.querySelectorAll('.row');
-    rowList.forEach(_ => {    
-         //get cells
-         const rootCells = document.querySelectorAll('.row-cell');
-         rootCells.forEach(cell => {  
-            if(expanded) {    
-              if(cell.id !== '0') {               
-                  cell.classList.remove('cell-expanded')
-                  cell.classList.add('cell-collapsed')   
-               } else { //fisrt row
-                  cell.classList.remove('cell-collapsed')
-                  cell.classList.add('cell-expanded')    
-               }                           
-            } else {     
-                if(level === 4) {
-                  cell.classList.remove('cell-expanded')
-                  cell.classList.add('cell-collapsed')    
-                } else {
-                    cell.classList.remove('cell-collapsed')
-                    cell.classList.add('cell-expanded') 
-                }             
-              }
-          })       
-    })    
-  }
-
-  //effect to collapse or expand children container from "Expand all" / "Collapse all" button
-  useEffect(() => {   
-    setExpanded(!expanded);
-    toggleAllContainersChildren()
-    updateCellsRootRows();
-  }, [collapse]);
 
   //toggle single container from arrow icon
   function toggleSingleContainerChildren(id) {
@@ -126,6 +59,80 @@ export default function Row({
   useEffect(() => {   
     toggleSingleContainerChildren(currentContainerChildrenId)
   }, [expanded]);
+
+    //toggle all containers
+    function toggleAllContainersChildren() {
+      const childrenList = document.querySelectorAll('.expanded, .collapsed');
+      childrenList.forEach(item => {    
+            if(expanded) {     
+              if(item.id !== 'children-container-0') {
+                item.classList.remove('collapsed-display')
+                item.classList.add('expanded-display')
+                setTimeout(() => {
+                  item.classList.remove('collapsed')
+                  item.classList.add('expanded')
+                }, 50)
+              }      
+            } else {
+              if(item.id !== 'children-container-0') {
+                item.classList.remove('expanded')
+                item.classList.add('collapsed')
+                setTimeout(() => {
+                  item.classList.remove('expanded-display')
+                  item.classList.add('collapsed-display')            
+                }, 500)
+               }
+            }
+      })
+      //validation to first row
+      if(childrenList[0].id === 'children-container-0') {
+        childrenList[0].classList.remove('collapsed')
+        childrenList[0].classList.remove('collapsed-display')
+        childrenList[0].classList.add('expanded')
+      }
+    }
+  
+    function updateRootCells() {
+      //get rootRows
+      const rowList = document.querySelectorAll('.row');
+      rowList.forEach(_ => {    
+           //get cells
+           const rootCells = document.querySelectorAll('.row-cell');
+           rootCells.forEach(cell => {             
+              //EXPANDED  
+              if(!expanded) {  
+                if(cell.id !== '0') {    
+                  cell.classList.remove('cell-expanded')
+                  cell.classList.add('cell-collapsed')     
+                } else { //fisrt row
+                    cell.classList.remove('cell-collapsed')
+                    cell.classList.add('cell-expanded')                        
+                }    
+                //COLLAPSED                        
+              } else { 
+                  cell.classList.remove('cell-collapsed')
+                  cell.classList.add('cell-expanded')      
+              }     
+            })       
+      })  
+    }
+
+    //level 4 - set collapsed class
+    function updateLevel4Cells() {
+      const level4List = document.querySelectorAll('.level-4');
+      level4List.forEach(cell => {
+        cell.classList.remove('cell-expanded')
+        cell.classList.add('cell-collapsed')      
+      })
+    }
+  
+    //effect to collapse or expand children container from "Expand all" / "Collapse all" button
+    useEffect(() => {   
+      setExpanded(!expanded);
+      toggleAllContainersChildren()
+      updateRootCells();
+      updateLevel4Cells()
+    }, [collapse]);
 
   return (
     <>

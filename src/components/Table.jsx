@@ -4,7 +4,7 @@ import CollapseAllButton from "./CollapseAllButton";
 import RowList from "./RowList";
 
 export default function Table({ rows, columns }) {
-  const [allCollapse, setAllCollapse] = useState(true);
+  const [allCollapse, setAllCollapse] = useState(false);
   const [goToTop, setGoToTop] = useState(false);
 
   const handleCollapse = () => {
