@@ -4,23 +4,21 @@ export default function CollapseAllButton({ allCollapse, handleCollapse }) {
   return (
     <>
       {allCollapse ? (
-        <div className="container-btn">
-          <button className="collapse-all-btn" onClick={handleCollapse}>
+        <div className="container-btn" onClick={handleCollapse}>
+          <button className="collapse-all-btn" >
             Expand all items
           </button>
           <TbArrowsDiagonal
             className="collapse-icon"
-            onClick={handleCollapse}
           />
         </div>
       ) : (
-        <div className="container-btn">
-          <button className="collapse-all-btn" onClick={handleCollapse}>
+        <div className="container-btn" onClick={handleCollapse}>
+          <button className="collapse-all-btn" >
             Collapse all items
           </button>
           <CgArrowsScrollV
             className="collapse-icon collapse-rotate-icon"
-            onClick={handleCollapse}
           />
         </div>
       )}

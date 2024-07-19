@@ -14,45 +14,20 @@ export default function Row({
   const [currentContainerChildrenId, setCurrentContainerChildrenId] = useState(null);
 
   const renderedChildren = children?.map((child, idx) => {    
-    // const childProps = {
-    //   ...child,
-    //   id: idx + 1,
-    // }
     return (     
-      // <Row key={idx} {...childProps } />
         <Row key={idx} {...child} />
     )
   });
 
   const handleShowChildren = (id, idContainer) => {
-    console.log('ID from row...', id)
-    // setCurrentContainerChildrenId(id)
     setCurrentContainerChildrenId(idContainer)
-    console.log('container ID:', currentContainerChildrenId)
     setExpanded(!expanded);
   };
 
   //toggle all containers
   function toggleAllContainersChildren() {
     const childrenList = document.querySelectorAll('.expanded, .collapsed');
-    childrenList.forEach(item => {
-      //allways expand first row
-      // if(item.id === '0') {
-     
-      // if(item.id === 'children-container-0') {
-      //    item.classList.remove('collapsed')
-      //    item.classList.add('expanded')
-      // } else {
-      //   if(expanded) {
-      //     item.classList.remove('collapsed')
-      //     item.classList.add('expanded')
-      //   } else {
-      //     item.classList.remove('expanded')
-      //     item.classList.add('collapsed')
-      //   }
-      // }
-   
-      
+    childrenList.forEach(item => {    
           if(expanded) {     
             if(item.id !== 'children-container-0') {
               item.classList.remove('collapsed-display')
@@ -81,21 +56,46 @@ export default function Row({
     }
   }
 
+  function updateCellsRootRows() {
+    //get rootRows
+    const rowList = document.querySelectorAll('.row');
+    rowList.forEach(_ => {    
+         //get cells
+         const rootCells = document.querySelectorAll('.row-cell');
+         rootCells.forEach(cell => {  
+            if(expanded) {    
+              if(cell.id !== '0') {               
+                  cell.classList.remove('cell-expanded')
+                  cell.classList.add('cell-collapsed')   
+               } else { //fisrt row
+                  cell.classList.remove('cell-collapsed')
+                  cell.classList.add('cell-expanded')    
+               }                           
+            } else {     
+                if(level === 4) {
+                  cell.classList.remove('cell-expanded')
+                  cell.classList.add('cell-collapsed')    
+                } else {
+                    cell.classList.remove('cell-collapsed')
+                    cell.classList.add('cell-expanded') 
+                }             
+              }
+          })       
+    })    
+  }
+
   //effect to collapse or expand children container from "Expand all" / "Collapse all" button
   useEffect(() => {   
-    // console.log('COLLAPSE from row:....', collapse)
-    // console.log('EXPANDED from row:....', expanded)
     setExpanded(!expanded);
     toggleAllContainersChildren()
+    updateCellsRootRows();
   }, [collapse]);
 
   //toggle single container from arrow icon
   function toggleSingleContainerChildren(id) {
-    console.log('container ID: ', id)   
     const childrenList = document.querySelectorAll('.expanded, .collapsed');
 
     childrenList.forEach(item => {
-      console.log('item.id: ', item.id)
       if(item.id === id) {
         if(expanded) {
           item.classList.remove('collapsed-display')
@@ -116,7 +116,6 @@ export default function Row({
     })
 
     //allways expand first row
-    // if(item.id === '0') {
     if(childrenList[0].id === 'children-container-0') {
       childrenList[0].classList.remove('collapsed')
       childrenList[0].classList.add('expanded')
@@ -128,9 +127,6 @@ export default function Row({
     toggleSingleContainerChildren(currentContainerChildrenId)
   }, [expanded]);
 
-
-  // console.log('id:....', id)
-
   return (
     <>
       {/* row */}
@@ -141,20 +137,20 @@ export default function Row({
             position={0}
             level={level}
             handleShowChildren={handleShowChildren}
-            // expanded={id === '0' ? true : expanded}
-            expanded={expanded}
+            expanded={id === '0' ? true : expanded}
             id={id}
             idContainer={`children-container-${id}`}
+            allCollapse={collapse}
           />
 
           {/* cell 2 */}
-          <Cell value={levelDescription} position={1} expanded={expanded} id={id} level={level}/>
+          <Cell value={levelDescription} position={1} expanded={expanded} id={id} level={level} allCollapse={collapse}/>
 
           {/* cell 3 */}
-          <Cell value={description} position={2} expanded={expanded} id={id} level={level}/>
+          <Cell value={description} position={2} expanded={expanded} id={id} level={level} allCollapse={collapse}/>
 
           {/* cell 4 */}
-          <Cell value={legalDescription} position={3} expanded={expanded} id={id} level={level}/>
+          <Cell value={legalDescription} position={3} expanded={expanded} id={id} level={level} allCollapse={collapse}/>
       </div>     
 
       {/* children container*/}      

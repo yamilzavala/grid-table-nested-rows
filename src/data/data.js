@@ -403,7 +403,7 @@ export const dataLevelsNested = [
     {
       wbsElement: "ESI001019",
       level: 2,
-      levelDescription: "L4 - Service Allocation",
+      levelDescription: "L2 - Service Allocation",
       description: "SAP Implementation FY24",
       legalDescription: "SAP Implementation FY24",
       children: [

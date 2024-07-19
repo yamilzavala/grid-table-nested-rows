@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import CollapseButton from "./CollapseButton";
 
 export default function Cell({
@@ -7,7 +8,8 @@ export default function Cell({
   handleShowChildren,
   expanded,
   id,
-  idContainer
+  idContainer,
+  allCollapse
 }) {
 
   function setPaddingLevel(position, level) {
@@ -35,8 +37,6 @@ export default function Cell({
   }
 
   function setClassLevel(level, expanded, position,id) {
-   // console.log('LEVEL: ', level, 'EXPANDED: ', expanded, 'POSITION: ', position, 'ID: ', id);
-    // console.log('expanded comming from ALL: ', expanded)
     let cellClass = "scroll-container row-cell cell-";
     // set grid template area
     switch (position) {
@@ -57,7 +57,6 @@ export default function Cell({
     if(level === 4) {
       cellClass += ' cell-collapsed'
     } else if (level < 4){
-      //debugger
       if(id === '0') {
         cellClass += ' cell-expanded'
       } else {
@@ -66,16 +65,14 @@ export default function Cell({
           } else {
             cellClass += ' cell-collapsed'
           }
-      }
+      }     
     }
     return cellClass
   }
 
-  // console.log('RENDERED....', expanded)
-
   return (
-    <div
-      className={setClassLevel(level, expanded, position, id)}
+    <div id={id}
+      className={setClassLevel(level, expanded, position, id, allCollapse)}
       style={{ paddingLeft: setPaddingLevel(position, level) }}
     >
       {level < 4 && position === 0 && (
@@ -84,6 +81,7 @@ export default function Cell({
           expanded={expanded}
           id={id}
           idContainer={idContainer}
+          allCollapse={allCollapse}
         />
       )}
       <div className='standard-cell'>{value}</div>
