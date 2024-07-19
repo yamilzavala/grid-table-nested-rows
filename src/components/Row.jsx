@@ -1,3 +1,4 @@
+import { rotateArrows, toggleAllContainersChildren, toggleSingleContainerChildren, updateLevel4Cells, updateRootCells } from "../utils/utils";
 import Cell from "./Cell";
 import { useState, useEffect } from "react";
 export default function Row({
@@ -19,133 +20,24 @@ export default function Row({
     )
   });
 
-  const handleShowChildren = (id, idContainer) => {
+  const handleShowChildren = (idContainer) => {
     setCurrentContainerChildrenId(idContainer)
     setExpanded(!expanded);
   };
 
-  //toggle (show or hide a single container id) from click in arrow icon
-  function toggleSingleContainerChildren(id) {
-    const childrenList = document.querySelectorAll('.expanded, .collapsed');
-
-    childrenList.forEach(item => {
-      if(item.id === id) {
-        if(expanded) {
-          item.classList.remove('collapsed-display')
-          item.classList.add('expanded-display')
-          setTimeout(() => {
-            item.classList.remove('collapsed')
-            item.classList.add('expanded')
-          }, 50)
-        } else {
-          item.classList.remove('expanded')
-          item.classList.add('collapsed')
-          setTimeout(() => {
-            item.classList.remove('expanded-display')
-            item.classList.add('collapsed-display')            
-          }, 500)
-        }
-      }
-    })
-
-    //allways expand first row
-    if(childrenList[0].id === 'children-container-0') {
-      childrenList[0].classList.remove('collapsed')
-      childrenList[0].classList.add('expanded')
-    }
-  }
-
   //effect to collapse or expand children container from click in cell (arrow icon)
   useEffect(() => {   
-    toggleSingleContainerChildren(currentContainerChildrenId)
-  }, [expanded]);
-
-    //toggle all containers
-    function toggleAllContainersChildren() {
-      const childrenList = document.querySelectorAll('.expanded, .collapsed');
-      childrenList.forEach(item => {    
-            if(expanded) {     
-              if(item.id !== 'children-container-0') {
-                item.classList.remove('collapsed-display')
-                item.classList.add('expanded-display')
-                setTimeout(() => {
-                  item.classList.remove('collapsed')
-                  item.classList.add('expanded')
-                }, 50)
-              }      
-            } else {
-              if(item.id !== 'children-container-0') {
-                item.classList.remove('expanded')
-                item.classList.add('collapsed')
-                setTimeout(() => {
-                  item.classList.remove('expanded-display')
-                  item.classList.add('collapsed-display')            
-                }, 500)
-               }
-            }
-      })
-      //validation to first row
-      if(childrenList[0].id === 'children-container-0') {
-        childrenList[0].classList.remove('collapsed')
-        childrenList[0].classList.remove('collapsed-display')
-        childrenList[0].classList.add('expanded')
-      }
-    }
+    toggleSingleContainerChildren(currentContainerChildrenId, expanded)
+  }, [expanded]);    
   
-    function updateRootCells() {
-      //get rootRows
-      const rowList = document.querySelectorAll('.row');
-      rowList.forEach(_ => {    
-           //get cells
-           const rootCells = document.querySelectorAll('.row-cell');
-           rootCells.forEach(cell => {             
-              //EXPANDED  
-              if(!expanded) {  
-                if(cell.id !== '0') {    
-                  cell.classList.remove('cell-expanded')
-                  cell.classList.add('cell-collapsed')  
-                } else { //fisrt row
-                    cell.classList.remove('cell-collapsed')
-                    cell.classList.add('cell-expanded')                        
-                }    
-                //COLLAPSED                        
-              } else { 
-                  cell.classList.remove('cell-collapsed')
-                  cell.classList.add('cell-expanded') 
-              }     
-            })       
-      })  
-    }
-
-    //level 4 - set collapsed class
-    function updateLevel4Cells() {
-      const level4List = document.querySelectorAll('.level-4');
-      level4List.forEach(cell => {
-        cell.classList.remove('cell-expanded')
-        cell.classList.add('cell-collapsed')      
-      })
-    }
-
-    //rotate arrow with global click
-    function rotateArrows() {
-      const arrowsList = document.querySelectorAll('.btn-arrow');
-      arrowsList.forEach(arrow => {
-        if(expanded) {
-          arrow.classList.add('btn-arrow-rotated')
-        } else {
-          arrow.classList.remove('btn-arrow-rotated')
-        }
-      })
-    }
-  
-    //effect to collapse or expand children container from "Expand all" / "Collapse all" button
-    useEffect(() => {   
-      setExpanded(!expanded);
-      toggleAllContainersChildren()
-      updateRootCells();
-      updateLevel4Cells();
-      rotateArrows();
-    }, [collapse]);
+  //effect to collapse or expand children container from "Expand all" / "Collapse all" button
+  useEffect(() => {   
+    setExpanded(!expanded);
+    toggleAllContainersChildren(expanded)
+    updateRootCells(expanded);
+    updateLevel4Cells();
+    rotateArrows(expanded);
+  }, [collapse]);
 
   return (
     <>
