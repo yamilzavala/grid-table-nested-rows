@@ -41,7 +41,7 @@ export default function Cell({
     // set grid template area
     switch (position) {
       case 0:
-        cellClass += "a";
+        cellClass += "a first-cell";
         break;
       case 1:
         cellClass += "b";

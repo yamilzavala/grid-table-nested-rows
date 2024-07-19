@@ -24,7 +24,7 @@ export default function Row({
     setExpanded(!expanded);
   };
 
-  //toggle single container from arrow icon
+  //toggle (show or hide a single container id) from click in arrow icon
   function toggleSingleContainerChildren(id) {
     const childrenList = document.querySelectorAll('.expanded, .collapsed');
 
@@ -55,7 +55,7 @@ export default function Row({
     }
   }
 
-  //effect to collapse or expand children container from cell table (arrow icon)
+  //effect to collapse or expand children container from click in cell (arrow icon)
   useEffect(() => {   
     toggleSingleContainerChildren(currentContainerChildrenId)
   }, [expanded]);
@@ -103,7 +103,7 @@ export default function Row({
               if(!expanded) {  
                 if(cell.id !== '0') {    
                   cell.classList.remove('cell-expanded')
-                  cell.classList.add('cell-collapsed')     
+                  cell.classList.add('cell-collapsed')  
                 } else { //fisrt row
                     cell.classList.remove('cell-collapsed')
                     cell.classList.add('cell-expanded')                        
@@ -111,7 +111,7 @@ export default function Row({
                 //COLLAPSED                        
               } else { 
                   cell.classList.remove('cell-collapsed')
-                  cell.classList.add('cell-expanded')      
+                  cell.classList.add('cell-expanded') 
               }     
             })       
       })  
@@ -125,13 +125,26 @@ export default function Row({
         cell.classList.add('cell-collapsed')      
       })
     }
+
+    //rotate arrow with global click
+    function rotateArrows() {
+      const arrowsList = document.querySelectorAll('.btn-arrow');
+      arrowsList.forEach(arrow => {
+        if(expanded) {
+          arrow.classList.add('btn-arrow-rotated')
+        } else {
+          arrow.classList.remove('btn-arrow-rotated')
+        }
+      })
+    }
   
     //effect to collapse or expand children container from "Expand all" / "Collapse all" button
     useEffect(() => {   
       setExpanded(!expanded);
       toggleAllContainersChildren()
       updateRootCells();
-      updateLevel4Cells()
+      updateLevel4Cells();
+      rotateArrows();
     }, [collapse]);
 
   return (
