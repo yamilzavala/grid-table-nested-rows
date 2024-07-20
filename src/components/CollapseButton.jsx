@@ -12,8 +12,8 @@ export default function CollapseButton({ handleShowChildren, expanded, id, idCon
         </button>
       ) : (
         <button id={id} disabled={id === '0'} onClick={() => handleShowChildren(idContainer)} className="btn-arrow btn-arrow-rotated">
-        <MdOutlineKeyboardArrowUp /> 
-      </button>
+          <MdOutlineKeyboardArrowUp /> 
+        </button>
       )}    
     </>
     

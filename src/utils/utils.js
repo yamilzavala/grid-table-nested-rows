@@ -61,28 +61,24 @@ export function toggleAllContainersChildren(expanded) {
   }
 
   export function updateRootCells(expanded) {
-    //get rootRows
-    const rowList = document.querySelectorAll('.row');
-    rowList.forEach(_ => {    
          //get cells
          const rootCells = document.querySelectorAll('.row-cell');
          rootCells.forEach(cell => {             
-            //EXPANDED  
+            //COLLAPSED  
             if(!expanded) {  
-              if(cell.id !== '0') {    
+              if(cell.id !== '0') {//cells !== first root    
                 cell.classList.remove('cell-expanded')
                 cell.classList.add('cell-collapsed')  
-              } else { //fisrt row
+              } else { //first root cell
                   cell.classList.remove('cell-collapsed')
                   cell.classList.add('cell-expanded')                        
               }    
-              //COLLAPSED                        
+              //EXPANDED                        
             } else { 
                 cell.classList.remove('cell-collapsed')
                 cell.classList.add('cell-expanded') 
             }     
-          })       
-    })  
+          })   
   }
 
   //level 4 - set collapsed class
@@ -94,21 +90,24 @@ export function toggleAllContainersChildren(expanded) {
     })
   }
 
+
   //rotate arrow with global click
   export function rotateArrows(expanded) {
     const arrowsList = document.querySelectorAll('.btn-arrow');
     arrowsList.forEach(arrow => {
       if(expanded) {
-        arrow.classList.remove('btn-arrow-rotated')
-      } else {
         if(arrow.id !== '0') {
-            arrow.classList.add('btn-arrow-rotated')
+            arrow.classList.remove('btn-arrow-rotated')
         }
+      } else {     
+        if(arrow.id !== '0') {  
+            arrow.classList.add('btn-arrow-rotated') 
+        }       
       }
     })
   }
 
-  //== CELL COMPONENT FUNCTIONS =====
+//== CELL COMPONENT FUNCTIONS =====
 export function setPaddingLevel(position, level) {
     let result = 0;
     if (position === 0) {
@@ -130,7 +129,7 @@ export function setPaddingLevel(position, level) {
       result = 0;
     }    
     return `${result}rem`;
-  }
+}
 
 export function setClassLevel(level, expanded, position,id) {
     let cellClass = "scroll-container row-cell cell-";
@@ -155,12 +154,12 @@ export function setClassLevel(level, expanded, position,id) {
     } else if (level < 4){
       if(id === '0') {
         cellClass += ' cell-expanded'
-      } else {
-          if(expanded) {
-            cellClass += ' cell-expanded'
-          } else {
-            cellClass += ' cell-collapsed'
-          }
+      } else {           
+            if(expanded) {
+              cellClass += ' cell-expanded'
+            } else {
+              cellClass += ' cell-collapsed'
+            }   
       }     
     }
     return cellClass

@@ -11,7 +11,7 @@ export default function Row({
   collapse,
   id,
 }) {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const [currentContainerChildrenId, setCurrentContainerChildrenId] = useState(null);
 
   const renderedChildren = children?.map((child, idx) => {    
@@ -31,7 +31,7 @@ export default function Row({
   }, [expanded]);    
   
   //effect to collapse or expand children container from "Expand all" / "Collapse all" button
-  useEffect(() => {   
+  useEffect(() => {      
     setExpanded(!expanded);
     toggleAllContainersChildren(expanded)
     updateRootCells(expanded);
@@ -52,23 +52,22 @@ export default function Row({
             expanded={id === '0' ? true : expanded}
             id={id}
             idContainer={`children-container-${id}`}
-            allCollapse={collapse}
           />
 
           {/* cell 2 */}
-          <Cell value={levelDescription} position={1} expanded={expanded} id={id} level={level} allCollapse={collapse}/>
+          <Cell value={levelDescription} position={1} expanded={expanded} id={id} level={level} />
 
           {/* cell 3 */}
-          <Cell value={description} position={2} expanded={expanded} id={id} level={level} allCollapse={collapse}/>
+          <Cell value={description} position={2} expanded={expanded} id={id} level={level} />
 
           {/* cell 4 */}
-          <Cell value={legalDescription} position={3} expanded={expanded} id={id} level={level} allCollapse={collapse}/>
+          <Cell value={legalDescription} position={3} expanded={expanded} id={id} level={level} />
       </div>     
 
       {/* children container*/}      
       {children?.length ? 
         (          
-          <div id={`children-container-${id}`} class='collapsed'>            
+          <div id={`children-container-${id}`} className='expanded'>            
             {renderedChildren}        
           </div>
         ) : null}     
