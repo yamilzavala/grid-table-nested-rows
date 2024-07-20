@@ -1,25 +1,25 @@
    //== ROW COMPONENT FUNCTIONS =====
  //toggle (show or hide a single container id) from click in arrow icon
- export function toggleSingleContainerChildren(id, expanded) {
+ export function toggleSingleContainerChildren(containerId, expanded) {
   const childrenList = document.querySelectorAll('.expanded, .collapsed');
-  childrenList.forEach(item => {
-    if(item.id === id) {
+  childrenList.forEach(container => {
+    if(container.id === containerId) {
       if(expanded) {
-        item.classList.remove('collapsed-display')
-        item.classList.add('expanded-display')
+        container.classList.remove('collapsed-display')
+        container.classList.add('expanded-display')
         setTimeout(() => {
-          item.classList.remove('collapsed')
-          item.classList.add('expanded')
+          container.classList.remove('collapsed')
+          container.classList.add('expanded')
         }, 50)
       } else {
-        item.classList.remove('expanded')
-        item.classList.add('collapsed')
+        container.classList.remove('expanded')
+        container.classList.add('collapsed')
         setTimeout(() => {
-          item.classList.remove('expanded-display')
-          item.classList.add('collapsed-display')            
+          container.classList.remove('expanded-display')
+          container.classList.add('collapsed-display')            
         }, 500)
       }
-    }
+    } 
   })
   //allways expand first row
   if(childrenList[0].id === 'children-container-0') {
@@ -31,25 +31,25 @@
 //toggle all containers
 export function toggleAllContainersChildren(expanded) {
     const childrenList = document.querySelectorAll('.expanded, .collapsed');
-    childrenList.forEach(item => {    
+    childrenList.forEach(container => {    
           if(expanded) {     
-            if(item.id !== 'children-container-0') {
-              item.classList.remove('collapsed-display')
-              item.classList.add('expanded-display')
+            if(container.id !== 'children-container-0') {
+              container.classList.remove('collapsed-display')
+              container.classList.add('expanded-display')
               setTimeout(() => {
-                item.classList.remove('collapsed')
-                item.classList.add('expanded')
+                container.classList.remove('collapsed')
+                container.classList.add('expanded')
               }, 50)
-            }      
+             }      
           } else {
-            if(item.id !== 'children-container-0') {
-              item.classList.remove('expanded')
-              item.classList.add('collapsed')
+           if(container.id !== 'children-container-0') {
+              container.classList.remove('expanded')
+              container.classList.add('collapsed')
               setTimeout(() => {
-                item.classList.remove('expanded-display')
-                item.classList.add('collapsed-display')            
+                container.classList.remove('expanded-display')
+                container.classList.add('collapsed-display')            
               }, 500)
-             }
+            }
           }
     })
     //validation to first row
@@ -91,15 +91,36 @@ export function toggleAllContainersChildren(expanded) {
   }
 
 
+  //rotate a single arrow with a arrow click
+  export function rotateSingleArrow(expanded, cellId) {
+    const arrowsList = document.querySelectorAll('.btn-arrow');
+    console.log('arrowsList: ', arrowsList)
+    let targetArrow;
+    arrowsList.forEach(arrow => {
+        if(arrow.id === cellId) {
+          targetArrow = arrow;
+          return;
+        }
+      }
+    )
+    if(expanded) {      
+      targetArrow?.classList.remove('btn-arrow-rotated')     
+    }  else {
+      targetArrow?.classList.add('btn-arrow-rotated')  
+    }    
+  }
+
   //rotate arrow with global click
   export function rotateArrows(expanded) {
     const arrowsList = document.querySelectorAll('.btn-arrow');
     arrowsList.forEach(arrow => {
       if(expanded) {
+        // if(arrow.id !== 'arrow-0') {
         if(arrow.id !== '0') {
             arrow.classList.remove('btn-arrow-rotated')
         }
       } else {     
+        // if(arrow.id !== 'arrow-0') {  
         if(arrow.id !== '0') {  
             arrow.classList.add('btn-arrow-rotated') 
         }       

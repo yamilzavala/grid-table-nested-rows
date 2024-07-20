@@ -1,4 +1,4 @@
-import { rotateArrows, toggleAllContainersChildren, toggleSingleContainerChildren, updateLevel4Cells, updateRootCells } from "../utils/utils";
+import { rotateArrows, rotateSingleArrow, toggleAllContainersChildren, toggleSingleContainerChildren, updateLevel4Cells, updateRootCells } from "../utils/utils";
 import Cell from "./Cell";
 import { useState, useEffect } from "react";
 export default function Row({
@@ -13,6 +13,7 @@ export default function Row({
 }) {
   const [expanded, setExpanded] = useState(false);
   const [currentContainerChildrenId, setCurrentContainerChildrenId] = useState(null);
+  //const [currentCellId, setCurrentCellId] = useState(null);
 
   const renderedChildren = children?.map((child, idx) => {    
     return (     
@@ -20,16 +21,18 @@ export default function Row({
     )
   });
 
-  const handleShowChildren = (idContainer) => {
+  const handleShowChildren = (idContainer, cellId) => {
     setCurrentContainerChildrenId(idContainer)
+//    setCurrentCellId(cellId)
     setExpanded(!expanded);
   };
 
-  //effect to collapse or expand children container from click in cell (arrow icon)
+  //effect to collapse or expand a single container from click in cell (arrow icon)
   useEffect(() => {   
+    //rotateSingleArrow(expanded, currentCellId);
     toggleSingleContainerChildren(currentContainerChildrenId, expanded)
-  }, [expanded]);    
-  
+  }, [expanded]);   
+
   //effect to collapse or expand children container from "Expand all" / "Collapse all" button
   useEffect(() => {      
     setExpanded(!expanded);
@@ -67,7 +70,7 @@ export default function Row({
       {/* children container*/}      
       {children?.length ? 
         (          
-          <div id={`children-container-${id}`} className='expanded'>            
+          <div id={`children-container-${id}`} className='collapsed'>            
             {renderedChildren}        
           </div>
         ) : null}     
