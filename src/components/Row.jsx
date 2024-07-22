@@ -42,10 +42,20 @@ export default function Row({
     rotateArrows(expanded);
   }, [collapse]);
 
+  function getRowClassContainer(level) {
+    let classes = `row `
+    if (level < 4) {
+      classes += 'bg-row-level-1-to-3 '
+    } else {
+       classes += 'bg-row-level-4 '
+    }
+    return classes;
+  }
+
   return (
     <>
       {/* row */}
-      <div id={id} className={level < 4 ? "bg-row-level-1-to-3 row" : "bg-row-level-4 row"}>  
+      <div id={id} className={getRowClassContainer(level)}>  
           {/* cell 1 */}
           <Cell
             value={wbsElement}
@@ -65,6 +75,8 @@ export default function Row({
 
           {/* cell 4 */}
           <Cell value={legalDescription} position={3} expanded={expanded} id={id} level={level} />
+
+          {/* {loading === true && <Shimmer/>} */}
       </div>     
 
       {/* children container*/}      

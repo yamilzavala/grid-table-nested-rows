@@ -6,7 +6,9 @@ export default function ContainerTable() {
   const [rows, setData] = useState([]); //this state fetch levels from endpoint
 
   useEffect(() => {
-    setData(dataLevelsNested);
+    // setTimeout(() => {
+       setData(dataLevelsNested);
+    // }, 10000)
   }, []);
 
   return (
