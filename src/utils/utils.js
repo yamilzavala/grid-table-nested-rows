@@ -175,7 +175,8 @@ export function setClassLevel(level, expanded, position,id) {
     } else if (level < 4){
       if(id === '0') {
         cellClass += ' cell-expanded'
-      } else {           
+      } 
+      else {           
             if(expanded) {
               cellClass += ' cell-expanded'
             } else {

@@ -35,7 +35,7 @@ export default function Row({
 
   //effect to collapse or expand children container from "Expand all" / "Collapse all" button
   useEffect(() => {      
-    setExpanded(!expanded);
+    //setExpanded(!expanded);
     toggleAllContainersChildren(expanded)
     updateRootCells(expanded);
     updateLevel4Cells();
