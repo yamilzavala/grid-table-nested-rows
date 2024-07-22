@@ -8,9 +8,8 @@ export default function Table({ rows, columns }) {
   const [allCollapse, setAllCollapse] = useState(true);
   const [goToTop, setGoToTop] = useState(false);
 
-
-  const handleCollapse = () => {
-    setAllCollapse(!allCollapse);
+  const handleCollapse = () => {  
+    setAllCollapse(prev => !prev);     
   };
 
   const handleSetGoToTop = () => {

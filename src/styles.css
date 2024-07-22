@@ -279,10 +279,9 @@ main {
   background: transparent;
   border-color: transparent;
   color: #007cb0;
-  width: 150px;
+  width: 500px;
   height: 50px;
   cursor: pointer;
-  letter-spacing: var(--letterSpacing);
   transition: var(--transition);
   text-transform: capitalize;
   font-weight: 600;
@@ -339,7 +338,7 @@ main {
   position: relative;
   width: 90vw;
   height: 80vh;
-  background: #f5f5f5;
+  background: #ffffff;
   border-radius: 0.5rem;
   overflow: hidden;
   display: flex;

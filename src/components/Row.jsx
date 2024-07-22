@@ -11,7 +11,7 @@ export default function Row({
   collapse,
   id,
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(!collapse);
   const [currentContainerChildrenId, setCurrentContainerChildrenId] = useState(null);
   //const [currentCellId, setCurrentCellId] = useState(null);
 
@@ -35,11 +35,11 @@ export default function Row({
 
   //effect to collapse or expand children container from "Expand all" / "Collapse all" button
   useEffect(() => {      
-    //setExpanded(!expanded);
-    toggleAllContainersChildren(expanded)
-    updateRootCells(expanded);
-    updateLevel4Cells();
-    rotateArrows(expanded);
+      setExpanded(!expanded);
+      toggleAllContainersChildren(expanded)
+      updateRootCells(expanded);
+      updateLevel4Cells();
+      rotateArrows(expanded);
   }, [collapse]);
 
   function getRowClassContainer(level) {
@@ -75,8 +75,6 @@ export default function Row({
 
           {/* cell 4 */}
           <Cell value={legalDescription} position={3} expanded={expanded} id={id} level={level} />
-
-          {/* {loading === true && <Shimmer/>} */}
       </div>     
 
       {/* children container*/}      
@@ -85,8 +83,8 @@ export default function Row({
           <div id={`children-container-${id}`} className='collapsed'>            
             {renderedChildren}        
           </div>
-        ) : null}     
-      
+        ) : null
+      }           
     </>
   );
 }

@@ -8,7 +8,7 @@ export default function ContainerTable() {
   useEffect(() => {
     setTimeout(() => {
       setData(dataLevelsNested);
-    }, 3000)
+    }, 1500)
   }, []);
 
   return (
