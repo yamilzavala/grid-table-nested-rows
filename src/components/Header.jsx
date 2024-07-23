@@ -1,29 +1,43 @@
-export default function Header({ columns }) {
+export default function Header({ columns, showLastColumn }) {
   const renderedHeaders = columns.map((col, idx) => {
     let headerClass = "header-cell cell-h";
     switch (idx) {
       case 0:
-        headerClass += "a";
+        headerClass += "a ";
         break;
       case 1:
-        headerClass += "b";
+        headerClass += "b ";
         break;
       case 2:
-        headerClass += "c";
+        if(showLastColumn) {
+          headerClass += "c";
+        } else {
+          headerClass += "c-three-cols"
+        }
         break;
       case 3:
-        headerClass += "d";
+        headerClass += "d ";
         break;
     }
-    return (
-      <div key={idx} className={`${headerClass}`}>
+
+    if(showLastColumn && idx === 3){
+      return (<div key={idx} className={`${headerClass}`}>
         {col}
-      </div>
-    );
+      </div>)
+    } else if(!showLastColumn && idx === 3){
+        return null
+    } else {
+      return (
+        <div key={idx} className={`${headerClass}`}>
+          {col}
+        </div>
+      );
+    }
+  
   });
 
   return (
-    <div className="header" id="myHeader">
+    <div className={`header ${showLastColumn ? 'four-columns-header' : 'three-columns-header'}`} id="myHeader">
       {renderedHeaders}
     </div>
   );

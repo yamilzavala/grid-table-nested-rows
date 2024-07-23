@@ -9,11 +9,12 @@ export default function Cell({
   expanded,
   id,
   idContainer,
+  showLastColumn
 }) {
 
     return (
       <div id={id}
-        className={setClassLevel(level, expanded, position, id)}
+        className={setClassLevel(level, expanded, position, id, showLastColumn)}
         style={{ paddingLeft: setPaddingLevel(position, level) }}
       >
         {level < 4 && position === 0 && (

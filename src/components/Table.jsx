@@ -4,7 +4,7 @@ import CollapseAllButton from "./CollapseAllButton";
 import RowList from "./RowList";
 import ShimmerSkeleton from "./ShimmerSkeleton";
 
-export default function Table({ rows, columns }) {
+export default function Table({ rows, columns, showLastColumn }) {
   const [allCollapse, setAllCollapse] = useState(true);
   const [goToTop, setGoToTop] = useState(false);
 
@@ -24,7 +24,7 @@ export default function Table({ rows, columns }) {
           allCollapse={allCollapse}
           handleCollapse={handleCollapse}
         />      
-        <RowList goToTop={goToTop} rows={rows} allCollapse={allCollapse} columns={columns}/>
+        <RowList goToTop={goToTop} rows={rows} allCollapse={allCollapse} columns={columns} showLastColumn={showLastColumn}/>
         <GoToTopButton handleSetGoToTop={handleSetGoToTop}/>
        </div> 
       ) : (

@@ -2,9 +2,9 @@ import React, {useEffect} from 'react';
 import Row from './Row';
 import Header from './Header';
 
-const RowList = ({rows, goToTop, allCollapse, columns}) => {
+const RowList = ({rows, goToTop, allCollapse, columns, showLastColumn}) => {
     const renderedRows = rows.map((row,idx) => (
-        <Row id={row.id} key={idx} {...row} collapse={allCollapse} rowPosition={idx} />
+        <Row id={row.id} key={idx} {...row} collapse={allCollapse} rowPosition={idx} showLastColumn={showLastColumn}/>
     ));
 
     const handleTop = () => {
@@ -21,7 +21,7 @@ const RowList = ({rows, goToTop, allCollapse, columns}) => {
     return (
         <div className="rows-container scroll-container">
             <div id='topel'></div>
-            <Header columns={columns}/>
+            <Header columns={columns} showLastColumn={showLastColumn}/>
             {renderedRows}
         </div>
     );

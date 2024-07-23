@@ -10,14 +10,15 @@ export default function Row({
   children,
   collapse,
   id,
+  showLastColumn
 }) {
   const [expanded, setExpanded] = useState(!collapse);
   const [currentContainerChildrenId, setCurrentContainerChildrenId] = useState(null);
   //const [currentCellId, setCurrentCellId] = useState(null);
-
+ 
   const renderedChildren = children?.map((child, idx) => {    
     return (     
-        <Row key={idx} {...child} />
+        <Row key={idx} {...child} showLastColumn={showLastColumn}/>
     )
   });
 
@@ -42,8 +43,20 @@ export default function Row({
       rotateArrows(expanded);
   }, [collapse]);
 
-  function getRowClassContainer(level) {
+  useEffect(() => {           
+      updateRootCells(expanded);
+      updateLevel4Cells();
+  }, [showLastColumn]);
+
+  function getRowClassContainer(level, showLastColumn) {
     let classes = `row `
+
+    if(showLastColumn) {
+      classes += ' four-columns-row '
+    } else {
+      classes += ' three-columns-row '
+    }
+
     if (level < 4) {
       classes += 'bg-row-level-1-to-3 '
     } else {
@@ -55,7 +68,7 @@ export default function Row({
   return (
     <>
       {/* row */}
-      <div id={id} className={getRowClassContainer(level)}>  
+      <div id={id} className={getRowClassContainer(level, showLastColumn)}>  
           {/* cell 1 */}
           <Cell
             value={wbsElement}
@@ -71,10 +84,10 @@ export default function Row({
           <Cell value={levelDescription} position={1} expanded={expanded} id={id} level={level} />
 
           {/* cell 3 */}
-          <Cell value={description} position={2} expanded={expanded} id={id} level={level} />
+          <Cell value={description} position={2} expanded={expanded} id={id} level={level} showLastColumn={showLastColumn}/>
 
           {/* cell 4 */}
-          <Cell value={legalDescription} position={3} expanded={expanded} id={id} level={level} />
+         {showLastColumn && <Cell value={legalDescription} position={3} expanded={expanded} id={id} level={level}/>}
       </div>     
 
       {/* children container*/}      
