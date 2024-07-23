@@ -1,34 +1,20 @@
 import React from 'react';
 import Shimmer from './Shimmer';
+import SkeletonElement from './SkeletonElement';
 
 const ShimmerSkeleton = () => {
     return (
-        <div className="shimmer-skeleton-container">
+        <div className="skeleton-container">
             {/*header  */}
-            <div className="shimmer-header">
+            <div className="skeleton-header">
                 {/* cells */}
-                <div className="shimmer-cell-header"></div>
-                <div className="shimmer-cell-header"></div>
-                <div className="shimmer-cell-header"></div>
-                <div className="shimmer-cell-header"></div>
+                {Array.from({ length: 4 }).map((_, idx) => (<SkeletonElement key={idx} type='skeleton-cell-header'/>))}
             </div>
 
             {/* rows */}
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
-            <div className="shimmer-row"></div>
+            {Array.from({ length: 12 }).map((_, idx) => (<SkeletonElement key={idx} type='skeleton-row'/>))}
 
-            {/* anitated loader */}
+            {/* animated loader */}
             <Shimmer/>
         </div>
     );

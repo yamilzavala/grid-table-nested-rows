@@ -147,7 +147,7 @@ main {
   display: flex;
   border: solid 1px white;
   padding: 0.6rem;
-  overflow-x: auto;
+  overflow-x: hidden;
   color: #53565a;
   text-transform: capitalize;
   padding-left: 1rem;
@@ -333,8 +333,8 @@ main {
   font-weight: 600;
 }
 
-/*=== LOADING ANIMATION === */
-.shimmer-skeleton-container {
+/*=== SKELETON LOADING ANIMATION === */
+.skeleton-container {
   position: relative;
   width: 90vw;
   height: 80vh;
@@ -348,19 +348,19 @@ main {
   gap: 1rem;
   }
   
-  .shimmer-header {
-    height: 2rem;   
-    width: 95%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
-  }
+.skeleton-header {
+  height: 2rem;   
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+ }
 
-.shimmer-cell-header {
+.skeleton-cell-header {
   background: rgba(214, 210, 210, 0.7);
   border-radius: 0.5rem;
 }
-.shimmer-row {
+.skeleton-row {
   height: 2rem;
   background: rgba(214, 210, 210, 0.7);
   border-radius: 0.5rem;
@@ -385,7 +385,6 @@ main {
   box-shadow: 0 0 30px 30px rgba(255,255,255,0.05);
 }
 
-
 @keyframes loadingShimmer {
   0% {
     transform: translateX(-150%);
@@ -399,16 +398,6 @@ main {
 }
 
 
-@keyframes skeleton-loading {
-  0% {
-    background-color: hls(200, 20%, 70%)
-  }
-  100% {
-    background-color: hls(200, 20%, 95%)
-  }
-}
-
-
 /* === MEDIA QUERIES === */
 @media screen and (min-width: 1px) and (max-width: 489px) {
   .header {    
@@ -417,7 +406,7 @@ main {
   .row {    
     grid-template-columns: 5rem 3rem 5rem 5rem;
   }
-  .shimmer-skeleton-container {   
+  .skeleton-container {   
     width: 18rem;
   }
   .shimmer {
@@ -433,7 +422,7 @@ main {
   .row {    
     grid-template-columns: 8rem 5rem 8rem 8rem;
   }
-  .shimmer-skeleton-container {   
+  .skeleton-container {   
     width: 30rem;
   }
   .shimmer {
@@ -452,8 +441,8 @@ main {
   .section-container-table {
     width: 40rem;
   }
-  .shimmer-skeleton-container {   
-    width: 38rem;
+  .skeleton-container {   
+    width: 40rem;
   }
   .shimmer {
     transform: skewX(-20deg);
@@ -471,8 +460,8 @@ main {
   .section-container-table {
     width: 45rem;
   }
-  .shimmer-skeleton-container {   
-    width: 43rem;
+  .skeleton-container {   
+    width: 45rem;
   }
 }
 
@@ -486,8 +475,8 @@ main {
   .section-container-table {
     width: 56rem;
   }
-  .shimmer-skeleton-container {   
-    width: 54rem;
+  .skeleton-container {   
+    width: 56rem;
   }
 }
 
@@ -501,8 +490,8 @@ main {
   .section-container-table {
     width: 68rem;
   }
-  .shimmer-skeleton-container {   
-    width: 66rem;
+  .skeleton-container {   
+    width: 68rem;
   }
 }
 
@@ -516,8 +505,8 @@ main {
   .section-container-table {
     width: 82rem;
   }
-  .shimmer-skeleton-container {   
-    width: 80rem;
+  .skeleton-container {   
+    width: 82rem;
   }
 }
 
