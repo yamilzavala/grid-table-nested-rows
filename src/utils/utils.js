@@ -152,7 +152,7 @@ export function setPaddingLevel(position, level) {
     return `${result}rem`;
 }
 
-export function setClassLevel(level, expanded, position,id) {
+export function setClassLevel(level, expanded, position,id, showLastColumn) {
     let cellClass = "scroll-container row-cell cell-";
     // set grid template area
     switch (position) {
@@ -163,7 +163,11 @@ export function setClassLevel(level, expanded, position,id) {
         cellClass += "b";
         break;
       case 2:
-        cellClass += "c";
+        if(showLastColumn) {
+          cellClass += "c";
+        } else {
+          cellClass += "c-three-cols"
+        }
         break;
       case 3:
         cellClass += "d";
